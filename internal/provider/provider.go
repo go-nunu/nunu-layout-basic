@@ -1,10 +1,10 @@
 package provider
 
 import (
-	"github.com/go-nunu/nunu-layout-base/internal/dao"
-	"github.com/go-nunu/nunu-layout-base/internal/handler"
-	"github.com/go-nunu/nunu-layout-base/internal/server"
-	"github.com/go-nunu/nunu-layout-base/internal/service"
+	"github.com/go-nunu/nunu-layout-basic/internal/dao"
+	"github.com/go-nunu/nunu-layout-basic/internal/handler"
+	"github.com/go-nunu/nunu-layout-basic/internal/server"
+	"github.com/go-nunu/nunu-layout-basic/internal/service"
 	"github.com/google/wire"
 )
 

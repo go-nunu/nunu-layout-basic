@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"github.com/go-nunu/nunu-layout-base/internal/model"
+	"github.com/go-nunu/nunu-layout-basic/internal/model"
 )
 
 type UserDao struct {

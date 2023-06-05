@@ -1,6 +1,6 @@
 package service
 
-import "github.com/go-nunu/nunu-layout-base/pkg/log"
+import "github.com/go-nunu/nunu-layout-basic/pkg/log"
 
 type Service struct {
 	logger *log.Logger

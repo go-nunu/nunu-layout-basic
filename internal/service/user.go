@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/go-nunu/nunu-layout-base/internal/dao"
-	"github.com/go-nunu/nunu-layout-base/internal/model"
+	"github.com/go-nunu/nunu-layout-basic/internal/dao"
+	"github.com/go-nunu/nunu-layout-basic/internal/model"
 )
 
 type UserService struct {

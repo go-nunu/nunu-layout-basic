@@ -8,11 +8,11 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/go-nunu/nunu-layout-base/internal/dao"
-	"github.com/go-nunu/nunu-layout-base/internal/handler"
-	"github.com/go-nunu/nunu-layout-base/internal/server"
-	"github.com/go-nunu/nunu-layout-base/internal/service"
-	"github.com/go-nunu/nunu-layout-base/pkg/log"
+	"github.com/go-nunu/nunu-layout-basic/internal/dao"
+	"github.com/go-nunu/nunu-layout-basic/internal/handler"
+	"github.com/go-nunu/nunu-layout-basic/internal/server"
+	"github.com/go-nunu/nunu-layout-basic/internal/service"
+	"github.com/go-nunu/nunu-layout-basic/pkg/log"
 	"github.com/spf13/viper"
 )
 

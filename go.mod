@@ -1,4 +1,4 @@
-module github.com/go-nunu/nunu-layout-base
+module github.com/go-nunu/nunu-layout-basic
 
 go 1.16
 
