@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-nunu/nunu-layout-base/internal/handler"
 	"github.com/go-nunu/nunu-layout-base/internal/middleware"
@@ -12,7 +11,7 @@ import (
 func NewServerHTTP(
 	log *log.Logger,
 	userHandler *handler.UserHandler,
-) (*gin.Engine, func()) {
+) *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.Use(
@@ -25,7 +24,5 @@ func NewServerHTTP(
 	})
 	r.GET("/user", userHandler.GetUserById)
 
-	return r, func() {
-		fmt.Println(6666)
-	}
+	return r
 }
