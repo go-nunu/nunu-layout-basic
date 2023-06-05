@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/go-nunu/nunu-layout/internal/dao"
-	"github.com/go-nunu/nunu-layout/internal/model"
+	"github.com/go-nunu/nunu-layout-base/internal/dao"
+	"github.com/go-nunu/nunu-layout-base/internal/model"
 )
 
 type UserService struct {
@@ -19,7 +19,4 @@ func NewUserService(service *Service, userDao *dao.UserDao) *UserService {
 
 func (s *UserService) GetUserById(id int64) (*model.User, error) {
 	return s.userDao.FirstById(id)
-}
-func (s *UserService) CreateUser(user *model.User) (*model.User, error) {
-	return s.userDao.CreateUser(user)
 }

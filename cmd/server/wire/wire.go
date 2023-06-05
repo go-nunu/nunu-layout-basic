@@ -5,8 +5,8 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/go-nunu/nunu-layout/internal/provider"
-	"github.com/go-nunu/nunu-layout/pkg/log"
+	"github.com/go-nunu/nunu-layout-base/internal/provider"
+	"github.com/go-nunu/nunu-layout-base/pkg/log"
 	"github.com/google/wire"
 	"github.com/spf13/viper"
 )
@@ -18,7 +18,5 @@ func NewApp(*viper.Viper, *log.Logger) (*gin.Engine, func(), error) {
 		provider.DaoSet,
 		provider.ServiceSet,
 		provider.HandlerSet,
-		provider.SonyflakeSet,
-		provider.JwtSet,
 	))
 }

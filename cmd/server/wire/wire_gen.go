@@ -8,13 +8,11 @@ package wire
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/go-nunu/nunu-layout/internal/dao"
-	"github.com/go-nunu/nunu-layout/internal/handler"
-	"github.com/go-nunu/nunu-layout/internal/middleware"
-	"github.com/go-nunu/nunu-layout/internal/server"
-	"github.com/go-nunu/nunu-layout/internal/service"
-	"github.com/go-nunu/nunu-layout/pkg/helper/sonyflake"
-	"github.com/go-nunu/nunu-layout/pkg/log"
+	"github.com/go-nunu/nunu-layout-base/internal/dao"
+	"github.com/go-nunu/nunu-layout-base/internal/handler"
+	"github.com/go-nunu/nunu-layout-base/internal/server"
+	"github.com/go-nunu/nunu-layout-base/internal/service"
+	"github.com/go-nunu/nunu-layout-base/pkg/log"
 	"github.com/spf13/viper"
 )
 
@@ -22,17 +20,13 @@ import (
 
 // wire.go 初始化模块
 func NewApp(viperViper *viper.Viper, logger *log.Logger) (*gin.Engine, func(), error) {
-	jwt := middleware.NewJwt(viperViper)
-	sonyflakeSonyflake := sonyflake.NewSonyflake()
-	handlerHandler := handler.NewHandler(logger, sonyflakeSonyflake)
+	handlerHandler := handler.NewHandler(logger)
 	serviceService := service.NewService(logger)
-	db := dao.NewDB(viperViper)
-	client := dao.NewRedis(viperViper)
-	daoDao := dao.NewDao(db, client, logger)
+	daoDao := dao.NewDao(logger)
 	userDao := dao.NewUserDao(daoDao)
 	userService := service.NewUserService(serviceService, userDao)
 	userHandler := handler.NewUserHandler(handlerHandler, userService)
-	engine, cleanup := server.NewServerHTTP(logger, jwt, userHandler)
+	engine, cleanup := server.NewServerHTTP(logger, userHandler)
 	return engine, func() {
 		cleanup()
 	}, nil

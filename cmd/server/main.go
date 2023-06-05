@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/go-nunu/nunu-layout/cmd/server/wire"
-	"github.com/go-nunu/nunu-layout/pkg/config"
-	"github.com/go-nunu/nunu-layout/pkg/log"
+	"github.com/go-nunu/nunu-layout-base/cmd/server/wire"
+	"github.com/go-nunu/nunu-layout-base/pkg/config"
+	"github.com/go-nunu/nunu-layout-base/pkg/log"
 	"go.uber.org/zap"
 )
 

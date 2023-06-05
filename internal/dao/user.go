@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"github.com/go-nunu/nunu-layout/internal/model"
+	"github.com/go-nunu/nunu-layout-base/internal/model"
 )
 
 type UserDao struct {
@@ -16,15 +16,6 @@ func NewUserDao(dao *Dao) *UserDao {
 
 func (r *UserDao) FirstById(id int64) (*model.User, error) {
 	var user model.User
-	if err := r.db.Where("id = ?", id).First(&user).Error; err != nil {
-		return nil, err
-	}
+	// TODO: query db
 	return &user, nil
-}
-
-func (r *UserDao) CreateUser(user *model.User) (*model.User, error) {
-	if err := r.db.Create(user).Error; err != nil {
-		return nil, err
-	}
-	return user, nil
 }

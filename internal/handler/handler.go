@@ -1,15 +1,14 @@
 package handler
 
 import (
-	"github.com/go-nunu/nunu-layout/pkg/log"
-	"github.com/sony/sonyflake"
+	"github.com/go-nunu/nunu-layout-base/pkg/log"
 )
 
 type Handler struct {
 	logger *log.Logger
 }
 
-func NewHandler(logger *log.Logger, sf *sonyflake.Sonyflake) *Handler {
+func NewHandler(logger *log.Logger) *Handler {
 	return &Handler{
 		logger: logger,
 	}
