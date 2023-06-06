@@ -15,7 +15,7 @@ func NewConfig() *viper.Viper {
 		flag.Parse()
 	}
 	if envConf == "" {
-		envConf = "local"
+		envConf = "config/local.yml"
 	}
 	fmt.Println("load conf file:", envConf)
 	return getConfig(envConf)
