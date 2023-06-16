@@ -1,19 +1,19 @@
-package dao
+package repository
 
 import (
 	"github.com/go-nunu/nunu-layout-basic/pkg/log"
 	"gorm.io/gorm"
 )
 
-type Dao struct {
+type Repository struct {
 	db *gorm.DB
 	//rdb    *redis.Client
 	logger *log.Logger
 }
 
-func NewDao(logger *log.Logger) *Dao {
-	return &Dao{
-		//db:     db,
+func NewRepository(logger *log.Logger, db *gorm.DB) *Repository {
+	return &Repository{
+		db: db,
 		//rdb:    rdb,
 		logger: logger,
 	}

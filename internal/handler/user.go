@@ -8,19 +8,24 @@ import (
 	"net/http"
 )
 
-type UserHandler struct {
-	*Handler
-	userService *service.UserService
+type UserHandler interface {
+	GetUserById(ctx *gin.Context)
+	UpdateUser(ctx *gin.Context)
 }
 
-func NewUserHandler(handler *Handler, userService *service.UserService) *UserHandler {
-	return &UserHandler{
+type userHandler struct {
+	*Handler
+	userService service.UserService
+}
+
+func NewUserHandler(handler *Handler, userService service.UserService) UserHandler {
+	return &userHandler{
 		Handler:     handler,
 		userService: userService,
 	}
 }
 
-func (c *UserHandler) GetUserById(ctx *gin.Context) {
+func (h *userHandler) GetUserById(ctx *gin.Context) {
 	var params struct {
 		Id int64 `form:"id" binding:"required"`
 	}
@@ -29,14 +34,15 @@ func (c *UserHandler) GetUserById(ctx *gin.Context) {
 		return
 	}
 
-	user, err := c.userService.GetUserById(params.Id)
-	c.logger.Info("GetUserByID", zap.Any("user", user))
+	user, err := h.userService.GetUserById(params.Id)
+	h.logger.Info("GetUserByID", zap.Any("user", user))
 	if err != nil {
 		resp.HandleError(ctx, http.StatusInternalServerError, 1, err.Error(), nil)
 		return
 	}
 	resp.HandleSuccess(ctx, user)
 }
-func (c *UserHandler) UpdateUser(ctx *gin.Context) {
+
+func (h *userHandler) UpdateUser(ctx *gin.Context) {
 	resp.HandleSuccess(ctx, nil)
 }

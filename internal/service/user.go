@@ -1,22 +1,26 @@
 package service
 
 import (
-	"github.com/go-nunu/nunu-layout-basic/internal/dao"
 	"github.com/go-nunu/nunu-layout-basic/internal/model"
+	"github.com/go-nunu/nunu-layout-basic/internal/repository"
 )
 
-type UserService struct {
-	*Service
-	userDao *dao.UserDao
+type UserService interface {
+	GetUserById(id int64) (*model.User, error)
 }
 
-func NewUserService(service *Service, userDao *dao.UserDao) *UserService {
-	return &UserService{
-		Service: service,
-		userDao: userDao,
+type userService struct {
+	*Service
+	userRepository repository.UserRepository
+}
+
+func NewUserService(service *Service, userRepository repository.UserRepository) UserService {
+	return &userService{
+		Service:        service,
+		userRepository: userRepository,
 	}
 }
 
-func (s *UserService) GetUserById(id int64) (*model.User, error) {
-	return s.userDao.FirstById(id)
+func (s *userService) GetUserById(id int64) (*model.User, error) {
+	return s.userRepository.FirstById(id)
 }
