@@ -1,7 +1,7 @@
 //go:build wireinject
 // +build wireinject
 
-package main
+package wire
 
 import (
 	"github.com/gin-gonic/gin"
@@ -32,7 +32,7 @@ var HandlerSet = wire.NewSet(
 	handler.NewUserHandler,
 )
 
-func newApp(*viper.Viper, *log.Logger) (*gin.Engine, func(), error) {
+func NewWire(*viper.Viper, *log.Logger) (*gin.Engine, func(), error) {
 	panic(wire.Build(
 		ServerSet,
 		RepositorySet,
