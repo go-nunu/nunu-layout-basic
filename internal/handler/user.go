@@ -8,24 +8,21 @@ import (
 	"net/http"
 )
 
-type UserHandler interface {
-	GetUserById(ctx *gin.Context)
-	UpdateUser(ctx *gin.Context)
-}
-
-type userHandler struct {
-	*Handler
-	userService service.UserService
-}
-
-func NewUserHandler(handler *Handler, userService service.UserService) UserHandler {
-	return &userHandler{
+func NewUserHandler(handler *Handler,
+	userService service.UserService,
+) *UserHandler {
+	return &UserHandler{
 		Handler:     handler,
 		userService: userService,
 	}
 }
 
-func (h *userHandler) GetUserById(ctx *gin.Context) {
+type UserHandler struct {
+	*Handler
+	userService service.UserService
+}
+
+func (h *UserHandler) GetUserById(ctx *gin.Context) {
 	var params struct {
 		Id int64 `form:"id" binding:"required"`
 	}
@@ -43,6 +40,6 @@ func (h *userHandler) GetUserById(ctx *gin.Context) {
 	resp.HandleSuccess(ctx, user)
 }
 
-func (h *userHandler) UpdateUser(ctx *gin.Context) {
+func (h *UserHandler) UpdateUser(ctx *gin.Context) {
 	resp.HandleSuccess(ctx, nil)
 }

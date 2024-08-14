@@ -10,7 +10,7 @@ import (
 
 func NewServerHTTP(
 	logger *log.Logger,
-	userHandler handler.UserHandler,
+	userHandler *handler.UserHandler,
 ) *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
